@@ -1,0 +1,8 @@
+{
+  "name": "PGSDUPICIBIRU2026 #dHeTik - Pembelajaran Pendidikan Pancasila Kelas 3 SD",
+  "description": "Website pembelajaran interaktif Pendidikan Pancasila kelas III SD (Fase B) - Aku Patuh Aturan: Aturan, Hak, dan Kewajiban di Lingkungan Keluarga dengan alur DHETIK.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

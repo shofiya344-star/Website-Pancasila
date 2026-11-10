@@ -1,0 +1,243 @@
+# PROMPT UNTUK GOOGLE AI STUDIO
+
+Salin semua isi di bawah garis ini ke AI Studio (Build / Chat). Sebelum dikirim, unggah juga file logo `logo-upi-cibiru.png` ke chat yang sama sebagai referensi tampilan.
+
+---
+
+Kamu adalah pengembang web front-end sekaligus desainer pembelajaran untuk Sekolah Dasar. Buatkan **satu file `index.html` lengkap** (HTML + CSS + JavaScript murni, tanpa framework, tanpa build step) untuk **website pembelajaran interaktif Pendidikan Pancasila kelas III SD (Fase B)**, bab **"Aku Patuh Aturan: Aturan, Hak, dan Kewajiban di Lingkungan Keluarga"**. Website disusun mengikuti alur pembelajaran **DHETIK**: Dekatkan, Hubungkan, Eksplorasi, Tukar gagasan, Ikat konsep, Karya dan refleksi.
+
+Tulis kode **utuh dan siap jalan**. Jangan memotong kode, jangan menulis "sisanya sama", dan jangan memakai placeholder di bagian isi pembelajaran.
+
+## 1. SPESIFIKASI TEKNIS
+
+- Satu file `index.html`. CSS di dalam `<style>`, JS di dalam `<script>`. Satu-satunya sumber luar yang boleh dipakai adalah Google Fonts (Baloo 2 untuk judul, Nunito untuk isi).
+- Navigasi berbasis `location.hash` (`#beranda`, `#d`, `#h`, `#e`, `#t`, `#i`, `#k`, `#lencana`, `#skor`, `#tentang`, `#guru`). Satu halaman tampil pada satu waktu.
+- Mobile-first dan nyaman di layar sentuh. Ukuran huruf dasar minimal 18px, tombol minimal 48px, kontras tinggi, fokus keyboard terlihat. Hormati `prefers-reduced-motion`.
+- Gaya visual: ceria, hangat, ramah anak. Warna utama hijau, oranye, biru, ungu. Sudut membulat. Satu warna khas untuk tiap tahap D, H, E, T, I, K.
+- Semua gambar adalah **ilustrasi buatan sendiri** berupa emoji besar atau SVG sederhana. Jangan memakai gambar, karakter, atau logo berhak cipta milik orang lain.
+- Bahasa untuk siswa: **Bahasa Indonesia sederhana untuk anak kelas 3 SD**. Kalimat pendek (maksimal 12 kata), kata sehari-hari, nada ramah ("Ayo", "Yuk", "Hebat!"). Hindari istilah sulit. Kalau ada istilah baru (misalnya "kewajiban"), jelaskan dengan contoh.
+- Di bagian atas script, buat blok konfigurasi:
+
+```js
+const CONFIG = {
+  APPS_SCRIPT_URL: "",   // diisi nanti setelah Apps Script di-deploy. Kosong = Mode Uji Coba (simpan di localStorage)
+  PADLET_EMBED_URL: "https://padlet.com/shofiyyh/ruang-diskusi-s025c27s6vo3jwgieebh",
+  PADLET_OPEN_URL:  "https://padlet.com/shofiyyh/ruang-diskusi-s025c27s6vo3jwgieebh",
+  LOGO_SRC: "logo-upi-cibiru.png",
+  VIDEOS: []             // kosong dulu. Format isi: {judul, youtubeId, sumber}
+};
+```
+
+- Jika `APPS_SCRIPT_URL` kosong, website tetap berjalan penuh dalam **Mode Uji Coba**: skor dan jawaban disimpan di `localStorage`, dan di header muncul label kecil "Mode Uji Coba". Halaman Guru dan Papan Skor memakai data lokal itu.
+- Padlet dipasang lewat `<iframe>` dengan `loading="lazy"`. Di bawahnya selalu ada tombol "Buka Padlet di tab baru" sebagai cadangan kalau iframe tidak tampil.
+- Kalau `CONFIG.VIDEOS` kosong, tampilkan kotak video bertuliskan "Video akan ditambahkan oleh guru" (jangan membuat link YouTube palsu). Kalau berisi, tampilkan video YouTube embed beserta teks sumber di bawahnya.
+
+## 2. IDENTITAS WAJIB (harus tampil jelas)
+
+1. **Teks `PGSDUPICIBIRU2026 #dHeTik`** tampil mencolok di header (sebagai lencana di samping nama situs) **dan** di footer semua halaman. Ejaan harus persis seperti itu. Judul tab browser (`<title>`) juga diawali teks ini.
+2. **Logo prodi**: `<img src="logo-upi-cibiru.png">` di header, tinggi sekitar 40px. Beri `alt="Logo UPI Kampus Cibiru"` dan `onerror` yang menggantinya dengan teks "UPI Kampus Cibiru". Logo yang kuunggah berupa spanduk lebar berisi tiga logo, jadi tampilkan utuh tanpa dipotong.
+3. Halaman **#tentang** dan footer memuat:
+   - Program Studi: **PGSD UPI Kampus Cibiru**
+   - Mata Kuliah: **Desain Sistem Pembelajaran**
+   - Dosen Pengampu: **Dr. Dede Trie Kurniawan, S.Si., M.Pd.**
+   - Pengembang: **Anggista Dwiana Pingkan (2311197), Shofiyyah Muna Syahidah (2308711), Uswatun Hasanah (2303347), Zahra Khairul Dealova (2312262)**
+   - Sasaran: Kelas III SD (Fase B), Pendidikan Pancasila, Aturan, Hak, dan Kewajiban
+   - Dimensi Profil Lulusan: Kewargaan, Kemandirian, Penalaran Kritis
+   - Tahun: 2026
+4. Bagian **Sumber dan Atribusi** di halaman #tentang. Setiap karya pihak lain (video, gambar, aplikasi) wajib dicantumkan sumber aslinya. Daftar awal: Kemendikbudristek (2023) *Pendidikan Pancasila untuk SD/MI Kelas IV*; Kurniawan, Priharto, & Lubis (2023) *Buku Siswa Pendidikan Pancasila SD/MI Kelas IV*; Padlet (papan diskusi). Tulis juga: "Seluruh ilustrasi dibuat sendiri oleh pengembang."
+
+## 3. MASKOT DAN FITUR GLOBAL
+
+- **Maskot "Rani"**: anak perempuan (gambar emoji/SVG buatan sendiri) yang memandu lewat gelembung ucapan di tiap halaman. Rani adalah tokoh cerita di tahap D, yang awalnya lupa aturan lalu belajar. Jadi Rani memandu sambil ikut belajar.
+- **Masuk tanpa password**: layar masuk berisi tiga isian, yaitu *Nama panggilan*, *Nomor absen*, dan *Kelas* (contoh 3A), lalu tombol "Mulai Belajar". Data masuk disimpan di `localStorage` supaya siswa tidak perlu mengisi ulang saat halaman dimuat ulang. Ada tombol "Ganti Siswa". Jangan meminta data pribadi lain.
+- **Bilah kemajuan** 6 langkah (D, H, E, T, I, K) dan menu atas yang bisa digeser di layar kecil. Tahap yang selesai diberi tanda ✅.
+- **Tombol 🔊 Dengarkan** di setiap pengantar halaman, memakai Web Speech API (`lang = "id-ID"`). Kalau tidak didukung, tampilkan pesan ramah.
+- **Mode Guru** (tombol di header): menampilkan **Panel Guru** di setiap halaman tahap (lihat bagian 5). Saat mati, panel tersembunyi.
+- **Lencana**: 6 lencana, satu per tahap, dengan toast "🎉 Lencana baru!" saat didapat dan halaman #lencana untuk melihat semuanya.
+- **Sertifikat** di akhir tahap K: berisi nama siswa, skor total, dan lencana. Pesannya "Tangkap layar sertifikat ini untuk ditunjukkan ke gurumu."
+- **Papan Skor** (#skor): 10 siswa teratas di kelas yang sama. Tampilkan **hanya nama panggilan, kelas, dan skor total**, jangan nomor absen. Beri label positif ("Bintang Tertib 🌟"). Tampilkan juga posisi dan skor siswa yang sedang masuk. Beri catatan "Semua penjelajah hebat! Yang penting kita belajar bersama."
+
+## 4. SISTEM SKOR (total 100)
+
+| Tahap | Maks | Cara penilaian otomatis |
+|---|---|---|
+| D | 10 | 1 poin untuk tiap kegiatan pagi yang aturannya dipilih benar (maks 6) + 4 poin jika tebakan awal terisi |
+| H | 15 | Permainan mencocokkan: 3 poin untuk tiap kartu yang benar (5 kartu) |
+| E | 15 | 1 poin untuk tiap catatan keluarga yang terisi (maks 3) + 4 soal hak/kewajiban x 3 poin |
+| T | 10 | Pengalaman ≥ 2 kalimat = 6 poin (1 kalimat = 3 poin) + 2 poin untuk tiap tanggapan ke teman yang dicentang (maks 2 tanggapan = 4 poin) |
+| I | 30 | Kuis 10 soal x 3 poin |
+| K | 20 | 3 poin untuk tiap waktu (pagi, siang, sore, malam) yang terisi (maks 12) + 4 poin komitmen dipilih + 4 poin refleksi terisi |
+
+**Ketuntasan Tujuan Pembelajaran** (otomatis, dikirim sebagai penanda):
+- TP1 tercapai jika di tahap D ada ≥ 3 aturan yang dipilih benar.
+- TP2 tercapai jika permainan di tahap H benar ≥ 4 dari 5 kartu.
+- TP3 tercapai jika pengalaman di tahap T ≥ 2 kalimat.
+- TP4 tercapai jika jadwal di tahap K memuat ≥ 3 aturan.
+
+Aturan skor: setiap tahap boleh diulang, dan yang disimpan adalah **skor terbaik**. Setelah tiap tahap selesai, skor dikirim ke server (lihat bagian 8). Tampilkan skor tahap dan total di bagian atas halaman dengan bahasa positif ("Kamu dapat 24 dari 30. Ayo coba lagi untuk jadi lebih baik!"), jangan dengan kata "gagal".
+
+## 5. PANEL GURU PER TAHAP
+
+Setiap halaman tahap punya Panel Guru (kotak biru muda) yang hanya tampil di Mode Guru. Isinya tabel: **Waktu | Tujuan Pembelajaran | Media | Strategi | Aktivitas Guru | Aktivitas Siswa**. Pakai isi berikut:
+
+**D – Dekatkan (Ayo Mulai), ± 10 menit**
+- TP 1 (C1): Melalui gambar interaktif rutinitas pagi hari, murid mampu menyebutkan minimal 3 aturan di lingkungan keluarga.
+- Media: gambar interaktif rutinitas pagi hari dan cerita pembuka "Rani dan Aturan di Rumah".
+- Strategi: Tanya jawab.
+- Guru: Mengajukan pertanyaan pemantik tentang kegiatan pagi hari, menampilkan gambar interaktif, menceritakan cerita pembuka, dan menanyakan pendapat murid tentang cerita itu.
+- Siswa: Mengeklik gambar kegiatan pagi, mengamati, menyebutkan aturan yang berkaitan, dan menuliskan tebakan awal tentang aturan serta akibat jika aturan tidak dipatuhi.
+
+**H – Hubungkan (Hubungkan dengan Hidupku), ± 15 menit**
+- TP 2 (C2): Melalui permainan mencocokkan gambar, murid mampu membedakan hak dan kewajiban anak di rumah pada minimal 4 dari 5 contoh.
+- Media: halaman "Hubungkan dengan Hidupku" dan permainan mencocokkan gambar hak/kewajiban.
+- Strategi: Tanya jawab dan permainan.
+- Guru: Mengarahkan murid membuka halaman, mengajak mengingat kebiasaan dan tugas di rumah, mengajukan pertanyaan pemantik, memberi tanggapan atas cerita murid, menjelaskan petunjuk permainan, dan memberi umpan balik.
+- Siswa: Memilih satu tugas yang biasa dilakukan di rumah lalu menceritakannya (lisan atau tulisan), kemudian memilah gambar kegiatan ke dalam kategori hak atau kewajiban.
+
+**E – Eksplorasi (Ayo Menjelajah), ± 25 menit**
+- TP 1 dan TP 2 (penguatan C1 dan C2).
+- Media: cerita bergambar/infografis tentang aturan, hak, dan kewajiban anak di rumah.
+- Strategi: Demonstrasi dan literasi visual.
+- Guru: Menjelaskan pengertian dan contoh aturan, hak, dan kewajiban dengan bahasa sederhana, lalu mengajak murid mengidentifikasi contohnya.
+- Siswa: Membaca materi, mencatat minimal 3 aturan, hak, dan kewajiban di keluarganya, serta menjawab pertanyaan sederhana tentang perbedaan hak dan kewajiban.
+
+**T – Tukar Gagasan (Ruang Diskusi), ± 15 menit**
+- TP 3 (C2): Melalui diskusi, murid mampu menceritakan pengalaman mematuhi aturan dengan bahasa sendiri minimal 2 kalimat.
+- Media: halaman "Ruang Diskusi" dengan papan Padlet.
+- Strategi: Diskusi.
+- Guru: Menyampaikan aturan diskusi yang santun, mengajukan pertanyaan diskusi, memoderasi, dan memberi tanggapan.
+- Siswa: Menuliskan pengalaman mematuhi aturan (minimal 2 kalimat), membaca cerita teman, dan menanggapi minimal 2 cerita teman dengan kalimat santun.
+
+**I – Ikat Konsep (Ikat Ilmuku), ± 10 menit**
+- TP 1, TP 2, dan TP 3 (penguatan).
+- Media: rangkuman, peta konsep, "Kotak Salah Paham", dan kuis singkat dengan pembahasan.
+- Strategi: Penugasan interaktif.
+- Guru: Membimbing murid mengingat materi, menjelaskan petunjuk kuis, memberi umpan balik, dan meluruskan jawaban yang masih keliru.
+- Siswa: Membaca rangkuman, membuka Kotak Salah Paham, mengerjakan kuis dan membaca pembahasannya, serta membandingkan tebakan awal di tahap D dengan pemahaman sekarang.
+
+**K – Karya dan Refleksi (Karyaku), ± 25 menit**
+- TP 4 (C3): Melalui lembar kerja interaktif Jadwal Aturanku, murid mampu menyusun jadwal aturan di rumah yang memuat minimal 3 aturan.
+- Media: LKPD interaktif "Jadwal Aturanku di Rumah" dan kolom refleksi.
+- Strategi: Penugasan mandiri.
+- Guru: Menjelaskan petunjuk dan kriteria penilaian, mendampingi murid, dan memberi umpan balik atas karya.
+- Siswa: Menyusun jadwal aturan dan kewajiban (pagi, siang, sore, malam), memilih atau menulis komitmen, dan mengisi refleksi.
+
+Di halaman **#beranda**, Mode Guru juga menampilkan: Capaian Pembelajaran (ringkas), Tujuan Pembelajaran 1 sampai 4, Pemahaman Bermakna, Pertanyaan Pemantik ("Mengapa di rumah ada aturan?" dan "Apa yang terjadi kalau di rumah tidak ada aturan?"), serta Dimensi Profil Lulusan (Kewargaan, Kemandirian, Penalaran Kritis).
+
+## 6. ISI PER HALAMAN (untuk siswa)
+
+### #beranda
+- Sambutan Rani, daftar "Tujuanku" dalam bahasa anak (4 butir sesuai TP), peta petualangan 6 tahap, dan tombol "Mulai Belajar" (sebelumnya meminta masuk jika belum).
+- Slot video tutorial (lihat aturan `CONFIG.VIDEOS`).
+
+### #d — Ayo Mulai
+1. Pembuka: "Pagi hari, kamu biasanya melakukan apa?"
+2. **Gambar interaktif rutinitas pagi** berisi 6 kegiatan yang dibuat dari SVG/emoji: bangun tidur, merapikan tempat tidur, sarapan, merapikan meja makan setelah makan, merapikan mainan, berpamitan ke sekolah. Tiap gambar bisa diklik. Setelah diklik muncul pertanyaan "Aturan apa yang cocok?" dengan 3 pilihan (1 benar), misalnya "Merapikan tempat tidur" → *Aturan: tempat tidur harus rapi.* Beri umpan balik langsung yang ramah. Hitung berapa aturan yang benar.
+3. **Cerita "Rani dan Aturan di Rumah"** (tampilkan dengan ilustrasi dan tombol 🔊): *Pagi hari, Rani bangun tidur dan bersiap ke sekolah. Tetapi Rani lupa merapikan tempat tidur. Rani tidak membantu merapikan meja makan setelah sarapan. Mainannya juga berserakan di ruang keluarga. Ibu mengingatkan Rani untuk merapikan barang dan menjaga rumah tetap bersih. Rani bertanya-tanya, "Kenapa aku harus melakukan semua itu? Bukankah merapikan rumah itu tugas orang tua?"*
+4. Tiga pertanyaan renungan (pilihan jawaban sederhana atau tombol): "Apakah Rani sudah benar?", "Apa yang seharusnya Rani lakukan setelah bangun tidur dan selesai bermain?", "Mengapa Rani perlu mematuhi aturan di rumah?"
+5. **Kolom "Tebakan Awalku"** (disimpan): "Menurutku, kalau aturan tidak dipatuhi, akibatnya adalah..." Simpan teksnya karena akan dipakai lagi di tahap I.
+
+### #h — Hubungkan dengan Hidupku
+1. Pertanyaan: "Tugas apa yang biasa kamu kerjakan di rumah?", "Siapa yang mengingatkanmu?", "Bagaimana perasaanmu setelah mengerjakannya?"
+2. Pilih satu tugas dari gambar (merapikan tempat tidur, mencuci piring, menyapu, menyiram tanaman, membuang sampah pada tempatnya, menyimpan sepatu di rak, lainnya), lalu tulis atau ketik ceritanya. Setelah disimpan, Rani menanggapi dengan hangat dan mengaitkannya ke kata "kewajiban". Jawaban disimpan tetapi tidak diberi poin.
+3. **Permainan Mencocokkan Gambar: Hak atau Kewajiban?** Tiap putaran mengambil 5 kartu acak dari 10 kartu di bawah. Siswa menyeret (atau mengetuk kartu lalu mengetuk kotak tujuan) ke kolom **HAK** atau **KEWAJIBAN**. Setelah selesai, tampilkan benar/salah per kartu dengan alasan singkat dan skor. Tombol "Main Lagi" mengambil kartu baru.
+   - HAK: mendapat kasih sayang orang tua 🤗; mendapat makanan sehat 🥗; bermain bersama teman ⚽; bersekolah dan belajar 📚; istirahat dan tidur cukup 😴.
+   - KEWAJIBAN: merapikan tempat tidur 🛏️; membantu ibu merapikan meja makan 🍽️; merapikan mainan setelah bermain 🧸; menyimpan sepatu di rak 👟; membuang sampah pada tempatnya 🗑️.
+
+### #e — Ayo Menjelajah
+1. **Cerita bergambar/infografis** dengan bahasa sederhana. Sajikan tiga kotak:
+   - **Aturan**: kesepakatan di rumah supaya rumah tertib, aman, dan nyaman. Contoh: tidur tepat waktu, meminta izin sebelum pergi, merapikan mainan.
+   - **Hak**: sesuatu yang boleh kita terima. Contoh: kasih sayang, makanan sehat, bermain, sekolah.
+   - **Kewajiban**: sesuatu yang harus kita kerjakan. Contoh: membantu orang tua, merapikan barang, menjaga kebersihan.
+   - Kalimat pengingat: "Hak dan kewajiban harus seimbang. Mematuhi aturan adalah cara menyayangi keluarga."
+2. **Tugas 1: Catatan Keluargaku.** Siswa menambahkan minimal 3 catatan. Tiap catatan memilih jenisnya (Aturan, Hak, atau Kewajiban) lalu menuliskan isinya.
+3. **Tugas 2: Pahami Perbedaannya.** 4 soal pilihan ganda ringan tentang hak dan kewajiban, dengan umpan balik langsung. Contoh: "Mana yang termasuk hak? A. Mendapat kasih sayang orang tua / B. Merapikan kamar."
+
+### #t — Ruang Diskusi
+1. **Aturan berdiskusi** (kotak ceklis kecil): mendengarkan teman, tidak mengejek, memakai bahasa yang baik. Sediakan juga "kalimat pembuka santun" (contoh: "Aku setuju karena...", "Terima kasih sudah bercerita", "Bolehkah aku bertanya...").
+2. Tiga pertanyaan diskusi: "Aturan apa saja yang biasa kamu patuhi di rumah?", "Bagaimana caramu mematuhinya?", "Bagaimana perasaanmu setelah mematuhi aturan?"
+3. **Kolom "Ceritaku"**: siswa menulis pengalaman mematuhi aturan dengan bahasa sendiri, minimal 2 kalimat. Website menghitung jumlah kalimat otomatis (pemisah `.`, `!`, `?`) dan memberi petunjuk ramah kalau belum cukup. Ada tombol "Salin ceritaku" untuk ditempel ke Padlet.
+4. **Padlet** (iframe `CONFIG.PADLET_EMBED_URL`, tinggi minimal 600px, plus tombol buka di tab baru). Instruksi: "Tempel ceritamu di Padlet, lalu baca dan tanggapi minimal 2 cerita temanmu dengan kalimat yang sopan."
+5. **Ceklis tanggapan**: "Aku sudah menanggapi cerita teman pertama" dan "Aku sudah menanggapi cerita teman kedua". Ini isian jujur oleh siswa, karena komentar di Padlet tidak bisa dibaca otomatis oleh website.
+
+### #i — Ikat Ilmuku
+1. **Rangkuman** bergambar, 4 poin ringkas tentang aturan, hak, kewajiban, dan hubungannya.
+2. **Peta konsep** yang bisa diklik: kotak tengah "Keluargaku" bercabang ke Aturan, Hak, dan Kewajiban, masing-masing dengan contoh.
+3. **Kotak Salah Paham** (klik kotak merah untuk melihat penjelasan benar):
+   - ❌ "Aturan hanya membuat anak tidak bisa bermain." → ✅ Aturan membuat rumah tertib, aman, dan nyaman. Bermain tetap hak kita, hanya ada waktunya.
+   - ❌ "Merapikan rumah hanya tugas orang tua." → ✅ Anak juga punya kewajiban membantu menjaga kebersihan rumah.
+   - ❌ "Anak hanya punya hak, orang tua yang punya kewajiban." → ✅ Setiap anggota keluarga, termasuk anak, punya hak dan kewajiban yang seimbang.
+   - ❌ "Kalau tidak ada yang melihat, boleh melanggar aturan." → ✅ Kita mematuhi aturan karena bertanggung jawab dan sayang pada keluarga, bukan karena takut dilihat.
+   - ❌ "Bermain bersama teman adalah kewajiban." → ✅ Bermain adalah hak anak. Kewajiban adalah hal yang harus kita kerjakan, seperti merapikan mainan setelah bermain.
+4. **Kuis 10 soal** (soal di bagian 7). Aturan kuis: satu soal tampil satu per satu atau semuanya dalam satu halaman gulir, pilihan A sampai C. **Setiap soal langsung menampilkan pembahasan** setelah dijawab (benar atau salah). Kalau salah, tampilkan juga kotak "🔎 Ingat salah paham ini:" yang mengaitkan ke salah satu Kotak Salah Paham di atas. Tombol "Coba Lagi" mengacak ulang urutan pilihan. Simpan skor terbaik.
+5. **Bandingkan tebakanku**: tampilkan Tebakan Awal dari tahap D di samping kolom "Sekarang aku tahu bahwa..." (siswa menulis). Tidak diberi poin tetapi disimpan.
+6. Kaitan dengan pelajaran lain (pendek): Bahasa Indonesia (menceritakan pengalaman), Matematika (menghitung aturan di jadwal), Seni (menghias jadwal).
+
+### #k — Karyaku
+1. **LKPD interaktif "Jadwal Aturanku di Rumah"**: tabel 4 baris (Pagi, Siang, Sore, Malam) dengan jam contoh (misalnya pagi 05.30–07.00, siang 12.00–14.00, sore 15.00–17.30, malam 18.30–21.00). Di tiap baris siswa memilih dari daftar usulan (contoh: bangun tepat waktu, merapikan tempat tidur, makan siang bersama, merapikan mainan, belajar, membantu ibu, menggosok gigi, tidur tepat waktu) atau menulis sendiri. Boleh menambah lebih dari satu kegiatan per waktu.
+2. **Komitmenku**: pilih atau tulis kalimat "Aku berjanji untuk... setiap hari" (3 contoh siap pilih).
+3. **Kriteria penilaian ditampilkan** dengan bahasa anak: memuat minimal 3 aturan, sesuai waktunya, ada komitmen.
+4. **Refleksi**: pilih perasaan (😄 senang / 🤩 semangat / 🤔 penasaran / 😕 masih bingung) dan isi dua kalimat lanjutan: "Hari ini aku belajar bahwa..." dan "Aku akan mulai mematuhi aturan dengan cara...".
+5. Tombol **"Selesai dan Ambil Sertifikat"**. Setelah semua tahap dikirim, tampilkan sertifikat dan skor total.
+
+## 7. KUIS TAHAP I (10 SOAL, KUNCI, DAN PEMBAHASAN)
+
+Gunakan soal berikut persis seperti ini. Pembahasan tampil setelah menjawab.
+
+1. Berikut ini yang termasuk aturan di rumah adalah ... → **A. Tidur tepat waktu**; B. Bermain sampai larut malam; C. Membiarkan mainan berserakan. *Pembahasan: Aturan membuat hidup tertib. Tidur tepat waktu membuat badan sehat. Dua pilihan lain justru melanggar aturan.*
+2. Mendapat kasih sayang dari orang tua termasuk ... anak. → **A. hak**; B. kewajiban; C. larangan. *Pembahasan: Hak adalah sesuatu yang boleh kita terima. Setiap anak berhak disayangi.*
+3. Membantu ibu merapikan meja makan setelah makan termasuk ... anak. → A. hak; **B. kewajiban**; C. larangan. *Pembahasan: Kewajiban adalah hal yang harus kita kerjakan, seperti membantu menjaga kebersihan rumah.*
+4. Jadwal aturan malam hari yang tepat untuk Dina adalah ... → **A. Menggosok gigi lalu tidur tepat waktu**; B. Menonton televisi sampai larut malam; C. Bermain game sampai pagi. *Pembahasan: Malam hari waktunya bersiap tidur supaya besok segar bangun pagi.*
+5. Kamu baru selesai bermain dan mainanmu berserakan di ruang keluarga. Sesuai aturan di rumah, yang sebaiknya kamu lakukan adalah ... → **A. membereskan mainan ke tempatnya**; B. membiarkan mainan sampai ibu datang; C. meminta adik membereskannya. *Pembahasan: Mainan itu milik kita, jadi kita yang membereskannya. Itu tanggung jawab kita sendiri.*
+6. Rani berkata, "Merapikan rumah hanya tugas orang tua." Pernyataan yang menunjukkan kesalahan Rani adalah ... → A. Anak hanya boleh bermain di rumah; **B. Anak juga punya kewajiban membantu menjaga kebersihan rumah**; C. Orang tua tidak boleh dibantu oleh anak. *Pembahasan: Di keluarga, semua anggota ikut menjaga rumah, termasuk anak. (Ingat salah paham: "Merapikan rumah hanya tugas orang tua.")*
+7. Perhatikan kegiatan berikut: (1) mendapat makanan sehat, (2) mencuci piring, (3) bermain bersama teman, (4) merapikan tempat tidur. Kegiatan yang termasuk kewajiban anak adalah ... → A. (1) dan (3); **B. (2) dan (4)**; C. (1) dan (2). *Pembahasan: Mencuci piring dan merapikan tempat tidur harus kita kerjakan, jadi kewajiban. Makanan sehat dan bermain adalah hak.*
+8. Kelompok kegiatan yang semuanya merupakan aturan di rumah adalah ... → A. bermain sampai larut malam, membuang sampah sembarangan, tidak membantu orang tua; **B. tidur tepat waktu, merapikan mainan, meminta izin sebelum pergi**; C. bangun siang, makan sambil berlari, meninggalkan mainan berserakan. *Pembahasan: Pilihan A dan C berisi kebiasaan yang melanggar aturan. Pilihan B berisi aturan yang baik.*
+9. Dito bercerita, "Aku selalu merapikan sepatu di rak setelah pulang sekolah. Aku senang karena rumah jadi rapi." Cerita Dito menunjukkan bahwa Dito ... → **A. mematuhi aturan di rumah dan senang melakukannya**; B. melanggar aturan di rumah; C. tidak punya aturan di rumah. *Pembahasan: Dito merapikan sepatu dan merasa senang. Itu tanda ia mematuhi aturan dengan hati yang senang.*
+10. Perhatikan jadwal Dino: 05.30 Bangun tidur; 06.00 Merapikan tempat tidur; 16.00 Bermain bersama teman; 19.00 Bermain game sampai larut malam; 21.00 Tidur. Kegiatan yang tidak sesuai aturan dan perbaikan yang tepat adalah ... → A. Merapikan tempat tidur jam 06.00, sebaiknya tidak perlu dirapikan; B. Bangun tidur jam 05.30, sebaiknya bangun siang; **C. Bermain game sampai larut malam, sebaiknya dibatasi waktunya agar bisa tidur tepat waktu**. *Pembahasan: Bermain game tanpa batas membuat tidur terlambat. Batasi waktunya supaya tidur tepat waktu.*
+
+## 8. PENYIMPANAN SKOR (Google Apps Script)
+
+Ada Web App Apps Script yang menerima data lewat `fetch` (method `POST`, header `Content-Type: text/plain;charset=utf-8` supaya tidak memicu preflight CORS, body berupa JSON string). Respons juga JSON. Buat fungsi pembantu `callServer(payload)` yang:
+- Jika `CONFIG.APPS_SCRIPT_URL` kosong, memakai `localStorage` sebagai penyimpan (Mode Uji Coba) dengan logika skor terbaik yang sama.
+- Jika ada, mengirim ke server, menangani galat jaringan dengan pesan ramah ("Koneksi lagi sulit. Skormu disimpan di perangkat dan akan dikirim lagi nanti."), dan menyimpan antrean kiriman yang gagal di `localStorage` untuk dikirim ulang otomatis saat halaman dibuka lagi.
+
+Tiga jenis permintaan:
+
+```json
+// 1. Simpan skor dan jawaban setelah tiap tahap selesai
+{"action":"save","kelas":"3A","absen":"7","nama":"Nisa","tahap":"I",
+ "scores":{"I":24},
+ "tp":{"TP1":true},
+ "answers":{"kuis_detail":"1A,2A,3B,...","tebakan_awal":"..."}}
+
+// 2. Papan skor siswa
+{"action":"leaderboard","kelas":"3A"}      // balasan: {ok:true, top:[{nama,kelas,total}]}
+
+// 3. Data untuk guru (butuh PIN)
+{"action":"guru","pin":"123456"}           // balasan: {ok:true, siswa:[[...]], jawaban:[[...]]}
+```
+
+Semua jawaban teks yang disimpan (tebakan awal, cerita tugas rumah, catatan keluarga, cerita pengalaman, jadwal aturan, komitmen, refleksi, jawaban sesudah kuis) dikirim di `answers` supaya guru bisa membacanya.
+
+## 9. HALAMAN GURU (#guru)
+
+- Dibuka lewat tautan kecil "Halaman Guru" di footer. Minta **PIN** lewat kolom isian (PIN diperiksa di server, jangan ditulis di kode website). Di Mode Uji Coba, PIN bebas dan data berasal dari `localStorage`.
+- Setelah masuk, tampilkan:
+  1. **Tabel rekap siswa**: Kelas, Absen, Nama, skor D/H/E/T/I/K, Total, dan penanda TP1 sampai TP4 (✅ atau —). Bisa disaring per kelas dan diurutkan per kolom.
+  2. **Ringkasan kelas**: jumlah siswa, rata-rata total, persentase siswa yang mencapai tiap TP.
+  3. **Jawaban uraian siswa**: klik nama siswa untuk melihat jawaban tertulisnya (tebakan awal, cerita, pengalaman, jadwal, komitmen, refleksi).
+  4. Tombol **Unduh CSV** untuk rekap.
+  5. Tombol **Muat Ulang**.
+- Tampilkan juga **tabel rubrik penilaian sikap dan keterampilan** (Kewargaan, Kemandirian, Penalaran Kritis; skala 1 sampai 4) sebagai pedoman penilaian guru yang manual, terpisah dari skor otomatis.
+
+## 10. KUALITAS DAN PEMERIKSAAN AKHIR
+
+Sebelum menjawab, periksa sendiri dan perbaiki bila perlu:
+- Teks `PGSDUPICIBIRU2026 #dHeTik`, logo, prodi, mata kuliah, dosen, dan 4 nama pengembang tampil sesuai bagian 2.
+- Semua 6 tahap punya Panel Guru berisi aktivitas guru dan aktivitas siswa.
+- Skor tersimpan dengan benar dalam Mode Uji Coba dan formatnya sesuai bagian 8, sehingga siap dihubungkan ke Apps Script.
+- Tidak ada kode yang terpotong, tidak ada fungsi yang dipanggil tapi belum dibuat.
+- Bahasa untuk siswa sudah sederhana. Tidak ada karakter atau gambar berhak cipta.
+- Kuis, kunci, dan pembahasan sama persis dengan bagian 7.
+
+**Keluaran:** langsung berikan satu blok kode `index.html` lengkap. Setelah blok kode, tulis 3 sampai 5 baris catatan tentang cara menguji di Mode Uji Coba dan di mana harus mengisi `APPS_SCRIPT_URL`.
