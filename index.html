@@ -1099,9 +1099,9 @@
       <nav class="nav-bar" aria-label="Alur DHETIK">
         <a href="#beranda" class="nav-link active" data-step="beranda">🏠 Beranda</a>
         <a href="#d" class="nav-link" data-step="d">🌅 D – Mulai <span class="status-check" id="check-d"></span></a>
-        <a href="#h" class="nav-link" data-step="h">🔗 H – Hidupku <span class="status-check" id="check-h"></span></a>
-        <a href="#e" class="nav-link" data-step="e">🧭 E – Menjelajah <span class="status-check" id="check-e"></span></a>
-        <a href="#t" class="nav-link" data-step="t">💬 T – Diskusi <span class="status-check" id="check-t"></span></a>
+        <a href="#h" class="nav-link" data-step="h">🔗 H – Hubungkan <span class="status-check" id="check-h"></span></a>
+        <a href="#e" class="nav-link" data-step="e">🧭 E – Eksplorasi <span class="status-check" id="check-e"></span></a>
+        <a href="#t" class="nav-link" data-step="t">💬 T – Tukar Gagasan <span class="status-check" id="check-t"></span></a>
         <a href="#i" class="nav-link" data-step="i">💡 I – Ikat Ilmuku <span class="status-check" id="check-i"></span></a>
         <a href="#k" class="nav-link" data-step="k">🎨 K – Karyaku <span class="status-check" id="check-k"></span></a>
         <a href="#lencana" class="nav-link" data-step="lencana">🏅 Lencana</a>
@@ -1188,7 +1188,7 @@
               "Halo sahabat kelas 3 SD! Aku Rani, siswi SD yang siap belajar bersamamu. Rumah yang bersih, aman, dan damai tercipta karena kita saling menyayangi serta mematuhi aturan. Yuk jelajahi petualangan seru ini!"
             </div>
             <div style="margin-top: 12px;">
-              <button type="button" class="btn-audio" onclick="playTTS('Halo sahabat kelas 3 SD! Aku Rani, siswi SD yang siap belajar bersamamu. Rumah yang bersih, aman, dan damai tercipta karena kita saling menyayangi serta mematuhi aturan. Yuk jelajahi petualangan seru ini!')">
+              <button type="button" class="btn-audio" onclick="playAudioFiles(['/assets/aistudio/Audio_1__2b70b134.MP3'], this)">
                 🔊 Dengarkan Rani
               </button>
             </div>
@@ -1314,7 +1314,7 @@
               "Pagi hari, kamu biasanya melakukan apa saja? Yuk klik setiap kegiatan pagi bergambar di bawah ini untuk menemukan aturan yang cocok!"
             </div>
             <div style="margin-top: 10px;">
-              <button type="button" class="btn-audio" onclick="playTTS('Pagi hari, kamu biasanya melakukan apa saja? Yuk klik setiap kegiatan pagi bergambar di bawah ini untuk menemukan aturan yang cocok!')">
+              <button type="button" class="btn-audio" onclick="playAudioFiles(['/assets/aistudio/Audio_2_098e16de.MP3'], this)">
                 🔊 Dengarkan Rani
               </button>
             </div>
@@ -1478,7 +1478,7 @@
 
         <div class="page-footer-nav">
           <a href="#beranda" class="btn-outline">⬅️ Ke Beranda</a>
-          <button type="button" class="btn-primary" onclick="goToStep('h')">Lanjut ke Tahap H (Hidupku) ➡️</button>
+          <button type="button" class="btn-primary" onclick="goToStep('h')">Lanjut ke Tahap H (Hubungkan) ➡️</button>
         </div>
       </section>
 
@@ -1508,7 +1508,7 @@
               "Di rumahmu, tugas apa yang biasa kamu lakukan? Dan apa hak menyenangkan yang kamu terima dari orang tua? Yuk kita hubungkan!"
             </div>
             <div style="margin-top: 10px;">
-              <button type="button" class="btn-audio" onclick="playTTS('Di rumahmu, tugas apa yang biasa kamu lakukan? Dan apa hak menyenangkan yang kamu terima dari orang tua? Yuk kita hubungkan!')">
+              <button type="button" class="btn-audio" onclick="playAudioFiles(['/assets/aistudio/Audio_03_0196233a.MP3'], this)">
                 🔊 Dengarkan Rani
               </button>
             </div>
@@ -1640,7 +1640,7 @@
 
         <div class="page-footer-nav">
           <a href="#d" class="btn-outline">⬅️ Kembali ke Tahap D</a>
-          <button type="button" class="btn-primary" onclick="goToStep('e')">Lanjut ke Tahap E (Menjelajah) ➡️</button>
+          <button type="button" class="btn-primary" onclick="goToStep('e')">Lanjut ke Tahap E (Eksplorasi) ➡️</button>
         </div>
       </section>
 
@@ -1670,7 +1670,7 @@
               "Apa bedanya aturan, hak, dan kewajiban? Yuk kita jelajahi infografis warna-warni berikut ini!"
             </div>
             <div style="margin-top: 10px;">
-              <button type="button" class="btn-audio" onclick="playTTS('Apa bedanya aturan, hak, dan kewajiban? Yuk kita jelajahi infografis warna-warni berikut ini!')">
+              <button type="button" class="btn-audio" onclick="playAudioFiles(['/assets/aistudio/Audio_4_a271e73f.MP3'], this)">
                 🔊 Dengarkan Rani
               </button>
             </div>
@@ -1838,7 +1838,7 @@
 
         <div class="page-footer-nav">
           <a href="#h" class="btn-outline">⬅️ Kembali ke Tahap H</a>
-          <button type="button" class="btn-primary" onclick="goToStep('t')">Lanjut ke Tahap T (Diskusi) ➡️</button>
+          <button type="button" class="btn-primary" onclick="goToStep('t')">Lanjut ke Tahap T (Tukar Gagasan) ➡️</button>
         </div>
       </section>
 
@@ -1868,7 +1868,7 @@
               "Ayo saling bercerita pengalaman mematuhi aturan di rumah! Gunakan kalimat yang santun dan dengarkan temanmu dengan baik ya!"
             </div>
             <div style="margin-top: 10px;">
-              <button type="button" class="btn-audio" onclick="playTTS('Ayo saling bercerita pengalaman mematuhi aturan di rumah! Gunakan kalimat yang santun dan dengarkan temanmu dengan baik ya!')">
+              <button type="button" class="btn-audio" onclick="playAudioFiles(['/assets/aistudio/Audio_5_a50e83d8.MP3'], this)">
                 🔊 Dengarkan Rani
               </button>
             </div>
@@ -2020,7 +2020,7 @@
               "Hebat! Sekarang kita ikat semua ilmu yang sudah kita pelajari agar menempel kuat di ingatan kita!"
             </div>
             <div style="margin-top: 10px;">
-              <button type="button" class="btn-audio" onclick="playTTS('Hebat! Sekarang kita ikat semua ilmu yang sudah kita pelajari agar menempel kuat di ingatan kita!')">
+              <button type="button" class="btn-audio" onclick="playAudioFiles(['/assets/aistudio/Audio_6_0164d43c.MP3'], this)">
                 🔊 Dengarkan Rani
               </button>
             </div>
@@ -2202,7 +2202,7 @@
               "Kini saatnya membuat karya nyata! Susun timetable jadwal aturanmu di rumah, lalu masukkan dan pamerkan karyamu ke Padlet kelas ya!"
             </div>
             <div style="margin-top: 10px;">
-              <button type="button" class="btn-audio" onclick="playTTS('Kini saatnya membuat karya nyata! Susun timetable jadwal aturanmu di rumah, lalu masukkan dan pamerkan karyamu ke Padlet kelas ya!')">
+              <button type="button" class="btn-audio" onclick="playAudioFiles(['/assets/aistudio/Audio_7_3a45d9c0.MP3', '/assets/aistudio/Audio_8_d1c55b82.MP3'], this)">
                 🔊 Dengarkan Rani
               </button>
             </div>
@@ -2729,15 +2729,18 @@
         <div class="card" id="guru-auth-gate" style="max-width:540px; margin:0 auto 30px; text-align:center;">
           <h3>🔐 Masuk ke Halaman Guru</h3>
           <p style="color:#64748b; margin-top:6px; margin-bottom:16px;">
-            Masukkan PIN guru untuk membuka rekap nilai siswa:
+            Masukkan password guru untuk membuka rekap nilai siswa:
           </p>
-          <div class="form-group" style="max-width:320px; margin:0 auto 16px;">
-            <input type="password" id="input-pin-guru" class="input-text" placeholder="Masukkan PIN Guru..." style="text-align:center; font-size:22px; letter-spacing:4px;">
-            <div id="pin-hint-text" style="font-size:14px; color:#64748b; margin-top:6px;">
-              *Di Mode Uji Coba, Anda dapat memasukkan PIN apa saja (misal: 123456).
+          <form onsubmit="event.preventDefault(); verifyGuruPIN();">
+            <div class="form-group" style="max-width:320px; margin:0 auto 16px;">
+              <input type="password" id="input-pin-guru" class="input-text" placeholder="Masukkan Password Guru..." style="text-align:center; font-size:20px; letter-spacing:3px;" required>
+              <div id="pin-error-text" style="font-size:14px; color:#dc2626; font-weight:700; margin-top:6px; display:none;"></div>
+              <div id="pin-hint-text" style="font-size:14px; color:#64748b; margin-top:6px;">
+                *Hanya pendidik yang memiliki password khusus yang dapat mengakses dasbor ini.
+              </div>
             </div>
-          </div>
-          <button type="button" class="btn-primary" onclick="verifyGuruPIN()">Buka Halaman Guru 🔓</button>
+            <button type="submit" class="btn-primary">Buka Halaman Guru 🔓</button>
+          </form>
         </div>
 
         <div id="guru-dashboard-content" style="display:none;">
@@ -2908,6 +2911,30 @@
     </div>
   </div>
 
+  <!-- MODAL PASSWORD MODE GURU -->
+  <div class="modal-backdrop" id="modal-guru-password">
+    <div class="modal-card" style="max-width:440px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+        <h3>🔐 Aktifkan Mode Guru</h3>
+        <button type="button" class="btn-sm btn-outline" onclick="closeGuruPasswordModal()">✖</button>
+      </div>
+      <p style="color:#64748b; font-size:15px; margin-bottom:16px;">
+        Masukkan password untuk menampilkan panel panduan guru di setiap tahapan pembelajaran:
+      </p>
+      <form onsubmit="handleGuruPasswordSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="input-guru-password">Password Guru:</label>
+          <input type="password" id="input-guru-password" class="input-text" placeholder="Masukkan password..." style="letter-spacing:2px;" required autocomplete="off">
+          <div id="guru-password-error" style="color:#dc2626; font-size:14px; font-weight:700; margin-top:6px; display:none;"></div>
+        </div>
+        <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:16px;">
+          <button type="button" class="btn-outline" onclick="closeGuruPasswordModal()">Batal</button>
+          <button type="submit" class="btn-primary">🔓 Aktifkan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- WADAH TOAST NOTIFIKASI -->
   <div class="toast-container" id="toast-container"></div>
 
@@ -2927,9 +2954,9 @@
           <div class="footer-links">
             <a href="#beranda">Beranda</a>
             <a href="#d">Mulai (D)</a>
-            <a href="#h">Hidupku (H)</a>
-            <a href="#e">Menjelajah (E)</a>
-            <a href="#t">Diskusi (T)</a>
+            <a href="#h">Hubungkan (H)</a>
+            <a href="#e">Eksplorasi (E)</a>
+            <a href="#t">Tukar Gagasan (T)</a>
             <a href="#i">Ikat Ilmuku (I)</a>
             <a href="#k">Karyaku (K)</a>
             <a href="#tentang">Tentang</a>
@@ -3343,10 +3370,15 @@
         else link.classList.remove('active');
       });
 
+      stopAllAudio();
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
       if (hash === 'skor') loadLeaderboard();
-      else if (hash === 'guru' && guruAuthenticated) renderGuruTable();
+      else if (hash === 'guru' && guruAuthenticated) {
+        document.getElementById('guru-auth-gate').style.display = 'none';
+        document.getElementById('guru-dashboard-content').style.display = 'block';
+        renderGuruTable();
+      }
     }
 
     function goToStep(step) {
@@ -3592,9 +3624,84 @@
     }
 
     /* ========================================================
-       8. AUDIO TTS
+       8. AUDIO PEMUTAR SUARA RANI & TTS FALLBACK
        ======================================================== */
+    let activeAudioPlayer = null;
+    let activeAudioButton = null;
+    let activeAudioQueue = [];
+
+    function resetAudioButtonState() {
+      if (activeAudioButton) {
+        activeAudioButton.textContent = activeAudioButton.dataset.originalLabel || '🔊 Dengarkan Rani';
+        activeAudioButton.classList.remove('playing');
+        activeAudioButton = null;
+      }
+    }
+
+    function stopAllAudio() {
+      activeAudioQueue = [];
+      if (activeAudioPlayer) {
+        activeAudioPlayer.pause();
+        activeAudioPlayer.currentTime = 0;
+        activeAudioPlayer = null;
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      resetAudioButtonState();
+    }
+
+    function playAudioFiles(urls, btnElem) {
+      const isSameBtnPlaying = activeAudioButton && btnElem && activeAudioButton === btnElem && activeAudioPlayer && !activeAudioPlayer.paused;
+      stopAllAudio();
+      if (isSameBtnPlaying) {
+        return;
+      }
+
+      if (!Array.isArray(urls) || urls.length === 0) return;
+
+      activeAudioQueue = [...urls];
+      if (btnElem) {
+        if (!btnElem.dataset.originalLabel) {
+          btnElem.dataset.originalLabel = btnElem.textContent.trim();
+        }
+        activeAudioButton = btnElem;
+        btnElem.textContent = '⏹️ Hentikan Audio';
+      }
+
+      const playNext = () => {
+        if (activeAudioQueue.length === 0) {
+          activeAudioPlayer = null;
+          resetAudioButtonState();
+          return;
+        }
+        const nextSrc = activeAudioQueue.shift();
+        const audio = new Audio(nextSrc);
+        activeAudioPlayer = audio;
+        audio.onended = () => {
+          if (activeAudioPlayer === audio) {
+            playNext();
+          }
+        };
+        audio.onerror = () => {
+          if (activeAudioPlayer === audio) {
+            activeAudioPlayer = null;
+            resetAudioButtonState();
+            showToast('Maaf, berkas audio tidak dapat diputar.');
+          }
+        };
+        audio.play().catch(() => {
+          activeAudioPlayer = null;
+          resetAudioButtonState();
+          showToast('Klik kembali tombol untuk memutar audio.');
+        });
+      };
+
+      playNext();
+    }
+
     function playTTS(text) {
+      stopAllAudio();
       if (!('speechSynthesis' in window)) {
         showToast('Perambanmu belum mendukung pembaca suara otomatis.');
         return;
@@ -3613,21 +3720,85 @@
     }
 
     /* ========================================================
-       9. MODE GURU
+       9. MODE GURU (PASSWORD: "GURU")
        ======================================================== */
+    const GURU_PASSWORD = 'GURU';
     let guruAuthenticated = false;
 
-    function toggleGuruMode() {
-      guruModeActive = !guruModeActive;
+    function setGuruModeState(active) {
+      guruModeActive = active;
       document.getElementById('guru-mode-status').textContent = guruModeActive ? 'AKTIF' : 'Mati';
       document.querySelectorAll('.panel-guru').forEach(p => {
         if (guruModeActive) p.classList.add('active');
         else p.classList.remove('active');
       });
-      if (guruModeActive) showToast('👨‍🏫 Mode Guru Aktif.');
+    }
+
+    function toggleGuruMode() {
+      if (guruModeActive) {
+        setGuruModeState(false);
+        showToast('Mode Guru dimatikan.');
+        return;
+      }
+
+      if (guruAuthenticated) {
+        setGuruModeState(true);
+        showToast('👨‍🏫 Mode Guru Aktif.');
+        return;
+      }
+
+      const modal = document.getElementById('modal-guru-password');
+      const input = document.getElementById('input-guru-password');
+      const err = document.getElementById('guru-password-error');
+      if (input) input.value = '';
+      if (err) {
+        err.textContent = '';
+        err.style.display = 'none';
+      }
+      modal.classList.add('active');
+      setTimeout(() => input && input.focus(), 50);
+    }
+
+    function closeGuruPasswordModal() {
+      document.getElementById('modal-guru-password').classList.remove('active');
+    }
+
+    function handleGuruPasswordSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('input-guru-password');
+      const err = document.getElementById('guru-password-error');
+      const val = (input ? input.value : '').trim();
+
+      if (val !== GURU_PASSWORD) {
+        if (err) {
+          err.textContent = '❌ Password salah! Pastikan huruf kapital sesuai.';
+          err.style.display = 'block';
+        }
+        showToast('❌ Password Mode Guru salah.');
+        return;
+      }
+
+      guruAuthenticated = true;
+      closeGuruPasswordModal();
+      setGuruModeState(true);
+      showToast('👨‍🏫 Mode Guru Aktif!');
     }
 
     async function verifyGuruPIN() {
+      const input = document.getElementById('input-pin-guru');
+      const err = document.getElementById('pin-error-text');
+      const val = (input ? input.value : '').trim();
+
+      if (val !== GURU_PASSWORD) {
+        if (err) {
+          err.textContent = '❌ Password salah! Masukkan password guru yang benar.';
+          err.style.display = 'block';
+        }
+        showToast('❌ Password guru salah.');
+        return;
+      }
+
+      if (err) err.style.display = 'none';
       guruAuthenticated = true;
       document.getElementById('guru-auth-gate').style.display = 'none';
       document.getElementById('guru-dashboard-content').style.display = 'block';
